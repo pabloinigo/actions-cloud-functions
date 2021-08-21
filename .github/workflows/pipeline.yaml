@@ -30,7 +30,7 @@ jobs:
 
       - name: make the url aunthenticated
         run: |
-          gcloud functions deploy ILoveMkdev --trigger-http --allow-unauthenticated 
+          gcloud functions add-iam-policy-binding ILoveMkdev --member="allUsers" --role="roles/cloudfunctions.invoker"
 
       - name: test the url
         run: curl "${{ steps.deploy.outputs.url }}"
